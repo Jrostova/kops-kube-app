@@ -19,7 +19,7 @@ spec:
           - "ignore-db-dir=lost+found"
         volumeMounts:
           - mountPath: /var/lib/mysql
-            name: vprod-db-data
+            name: vpro-db-data
         resources:
           limits:
             memory: "228Mi"
