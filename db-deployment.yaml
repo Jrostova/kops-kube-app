@@ -15,11 +15,11 @@ spec:
       containers:
       - name: vprodb
         image: judedba/vprofiledb:V1
-        args:
-          - "--ignore-db-dir=lost+found"
-        volumeMounts:
-          - mountPath: /var/lib/mysql
-            name: vpro-db-data
+        # args:
+         # - "--ignore-db-dir=lost+found"
+       # volumeMounts:
+          #- mountPath: /var/lib/mysql
+           # name: vpro-db-data
         resources:
           limits:
             memory: "228Mi"
