@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpromc
+spec:
+  selector:
+    matchLabels:
+      app: vpromc
+  replica: 1
+  template:
+    metadata:
+      labels:
+        app: vpromc
+    spec:
+      containers:
+      - name: vpromc
+        image: memcached
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 11211
+            name: vpromc-port
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpromc
+spec:
+  selector:
+    app: vpromc
+  ports:
+  - port: 11211
+    targetPort: vpromc-port
+    protocol: TCP 
+  type: ClusterIP
